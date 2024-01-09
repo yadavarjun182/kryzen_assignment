@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import '../Pages/UserDataForm.css'
 import Preview from './Preview';
+import axios from 'axios';
+
+
 
 const UserDataForm = () => {
 
@@ -35,18 +38,18 @@ const UserDataForm = () => {
         });
     };
 
-
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here, you can send the formData to an API or perform other actions
-        console.log(formData);
-        setShowPreview(true); // Show preview after form submission
+        try {
+            const response = await axios.post('http://localhost:2387/data/userform', formData);
+            console.log(response.data); // handle success message
+            setShowPreview(true); // Show preview after form submission
+        } catch (error) {
+            console.error(error.response.data.err); // handle error
+        }
     };
 
-    const togglePreview = () => {
-        setShowPreview(!showPreview);
-    };
+
 
     return (
 
@@ -97,7 +100,7 @@ const UserDataForm = () => {
                             required
                         />
                     </div>
-                    <button type="submit" onClick={togglePreview}>
+                    <button type="submit">
                         Submit
                     </button>
                 </form>

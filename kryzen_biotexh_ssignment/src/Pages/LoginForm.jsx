@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './LoginForm.css';
+import axios from 'axios';
+
 
 
 
@@ -33,7 +35,7 @@ const LoginForm = () => {
 
     return (
         <div className="container">
-            <h1>Signup</h1>
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username:</label>

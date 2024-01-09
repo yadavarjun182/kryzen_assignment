@@ -1,13 +1,11 @@
 
 import './App.css'
-import SignupForm from './Pages/SignUpForm';
-// import UserDataForm from './Pages/UserDataForm';
+import AllRoutes from './Components/AllRoutes';
 
 function App() {
   return (
     <>
-      {/* <UserDataForm /> */}
-      <SignupForm />
+      <AllRoutes/>
     </>
   );
 }
