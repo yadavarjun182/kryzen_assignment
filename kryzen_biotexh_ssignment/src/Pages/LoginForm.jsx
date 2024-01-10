@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './LoginForm.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,6 +12,7 @@ const LoginForm = () => {
         username: '',
         password: '',
     });
+const navigate =useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,6 +28,7 @@ const LoginForm = () => {
         try {
             const response = await axios.post('http://localhost:2387/user/login', formData);
             console.log(response.data); // handle success message
+            navigate('/userform');
         } catch (error) {
             console.error(error.response.data.err); // handle error
         }

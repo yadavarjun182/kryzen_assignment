@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './SignUpForm.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 // import '../Pages/SignUp.css'; // Impo?rt your CSS file for styling
 
@@ -9,6 +10,8 @@ const SignupForm = () => {
         username: '',
         password: '',
     });
+
+    const navigate= useNavigate()
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,6 +27,7 @@ const SignupForm = () => {
         try {
             const response = await axios.post('http://localhost:2387/user/register', formData);
             console.log(response.data); // handle success message
+            navigate('/login');
         } catch (error) {
             console.error(error.response.data.err); // handle error
         }
